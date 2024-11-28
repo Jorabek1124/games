@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oddiy dastur</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    video {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Oyin oynaysizmi</h1>
+  <p>Tugmani bosing va oyinga kiring.</p>
+  <button id="startButton">Qiziqarli oyin</button>
+  <video id="video" autoplay playsinline muted></video>
+
+  <script>
+    document.getElementById('startButton').addEventListener('click', async () => {
+      const videoElement = document.getElementById('video');
+      try {
+        // Kamerani ishga tushirish
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        videoElement.srcObject = stream; // Video oqimini o'rnatish
+        // alert("Kamerani ishlatishga ruxsat berdingiz!");
+      } catch (error) {
+        alert("Kameradan foydalanishga ruxsat bermadingiz yoki xatolik yuz berdi!");
+      }
+    });
+  </script>
+</body>
+</html>
